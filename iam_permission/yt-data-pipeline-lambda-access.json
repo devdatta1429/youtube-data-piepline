@@ -1,0 +1,48 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3Access",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:ListBucket"],
+      "Resource": [
+        "arn:aws:s3:::yt-data-pipeline-bronze-ap-south-1-devdatta",
+        "arn:aws:s3:::yt-data-pipeline-bronze-ap-south-1-devdatta/*",
+        "arn:aws:s3:::yt-data-pipeline-silver-ap-south-1-devdatta",
+        "arn:aws:s3:::yt-data-pipeline-silver-ap-south-1-devdatta/*",
+        "arn:aws:s3:::yt-data-pipeline-gold-ap-south-1-devdatta",
+        "arn:aws:s3:::yt-data-pipeline-gold-ap-south-1-devdatta/*"
+      ]
+    },
+    {
+      "Sid": "GlueAccess",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetTable",
+        "glue:GetDatabase",
+        "glue:CreateTable",
+        "glue:UpdateTable",
+        "glue:GetPartitions",
+        "glue:CreatePartition",
+        "glue:BatchCreatePartition"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "SNSAccess",
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:ap-south-1:442797924637:yt-data-pipeline-alerts-devdatta:ec67a86b-76dc-4cc7-9574-ac2b23c26f67"
+    },
+    {
+      "Sid": "AthenaAccess",
+      "Effect": "Allow",
+      "Action": [
+        "athena:StartQueryExecution",
+        "athena:GetQueryExecution",
+        "athena:GetQueryResults"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
