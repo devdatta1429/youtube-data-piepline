@@ -202,4 +202,3 @@ def lambda_handler(event, context):
         "ingestion_id": ingestion_id,
         "results": results,
     } 
-

@@ -206,7 +206,7 @@ def lambda_handler(event, context):
 
                     break
 
-            df["region"] = region
+            
 
             logger.info(
                 f"Region: {region}"
