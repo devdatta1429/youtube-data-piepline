@@ -1,0 +1,479 @@
+Microsoft Windows [Version 10.0.26200.9168]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions list-executions --state-machine-arn <your-state-machine-arn> --region ap-south-1 --max-results 1 --query "executions[0].executionArn"
+The system cannot find the file specified.
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions list-executions --state-machine-arn <your-state-machine-arn> --region ap-south-1 --max-results 1 --query "executions[0].executionArn"
+The system cannot find the file specified.
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions list-executions --state-machine-arn arn:aws:iam::442797924637:role/yt-data-pipeline-stepfunctions-role-devdatta --region ap-south-1 --max-results 1 --query "executions[0].executionArn"
+
+An error occurred (InvalidArn) when calling the ListExecutions operation: Invalid Arn: 'Arn missing resource component: arn:aws:iam::442797924637:role/yt-data-pipeline-stepfunctions-role-devdatta'
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions list-executions --state-machine-arn arn:aws:iam::442797924637:role/yt-data-pipeline-stepfunctions-role-devdatta  --region ap-south-1 --max-results 1 --query "executions[0].executionArn"
+
+An error occurred (InvalidArn) when calling the ListExecutions operation: Invalid Arn: 'Arn missing resource component: arn:aws:iam::442797924637:role/yt-data-pipeline-stepfunctions-role-devdatta'
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions list-state-machines --region ap-south-1 --query "stateMachines[].{Name:name,Arn:stateMachineArn}" --output table
+------------------------------------------------------------------------------------------------
+|                                       ListStateMachines                                      |
++------+---------------------------------------------------------------------------------------+
+|  Arn |  arn:aws:states:ap-south-1:442797924637:stateMachine:yt-data-pipeline-orchestration   |
+|  Name|  yt-data-pipeline-orchestration                                                       |
++------+---------------------------------------------------------------------------------------+
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions list-executions --state-machine-arn arn:aws:states:ap-south-1:442797924637:stateMachine:yt-data-pipeline-orchestration  --region ap-south-1 --max-results 1 --query "executions[0].executionArn"
+"arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions get-execution-history --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "events[?type=='LambdaFunctionSucceeded'].output" --output text
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions get-execution-history --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "events[?type=='LambdaFunctionSucceeded'].output" --output text
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions get-execution-history --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "events[?type=='LambdaFunctionSucceeded'].output" --output text
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions get-execution-history --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "events[?type=='LambdaFunctionSucceeded']" --output json
+[]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions get-execution-history --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "events[?type=='LambdaFunctionSucceeded']" --output json
+[]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions describe-execution --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "[status,stopDate]"
+[
+    "SUCCEEDED",
+    1786994724.636
+]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions get-execution-history --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "events[-10:].{type:type,details:lambdaFunctionFailedEventDetails}" --output json
+[
+    {
+        "type": "TaskSucceeded",
+        "details": null
+    },
+    {
+        "type": "TaskStateExited",
+        "details": null
+    },
+    {
+        "type": "ChoiceStateEntered",
+        "details": null
+    },
+    {
+        "type": "ChoiceStateExited",
+        "details": null
+    },
+    {
+        "type": "TaskStateEntered",
+        "details": null
+    },
+    {
+        "type": "TaskScheduled",
+        "details": null
+    },
+    {
+        "type": "TaskStarted",
+        "details": null
+    },
+    {
+        "type": "TaskSucceeded",
+        "details": null
+    },
+    {
+        "type": "TaskStateExited",
+        "details": null
+    },
+    {
+        "type": "ExecutionSucceeded",
+        "details": null
+    }
+]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws stepfunctions get-execution-history --execution-arn "arn:aws:states:ap-south-1:442797924637:execution:yt-data-pipeline-orchestration:f377f8ec-b61d-4545-acce-e69fa94d459a" --region ap-south-1 --query "events[?type=='TaskSucceeded'].output" --output json
+[]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 ls s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/ --recursive
+2026-08-17 19:55:43       3498 youtube/reference_data/region=ca/reference_data.parquet
+2026-08-09 03:05:51        811 youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00000-snappy.parquet
+2026-08-09 03:05:51        946 youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00001-snappy.parquet
+2026-08-09 03:05:51        776 youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00002-snappy.parquet
+2026-08-09 03:05:51        797 youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00003-snappy.parquet
+2026-08-17 19:55:41       3498 youtube/reference_data/region=gb/reference_data.parquet
+2026-08-17 19:55:45       3498 youtube/reference_data/region=in/reference_data.parquet
+2026-08-17 19:55:40       3529 youtube/reference_data/region=us/reference_data.parquet
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 rm s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=de/ --recursive
+delete: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00001-snappy.parquet
+delete: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00000-snappy.parquet
+delete: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00003-snappy.parquet
+delete: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=de/run-1786224947048-part-block-0-0-r-00002-snappy.parquet
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 ls s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/ --recursive
+2026-08-17 19:55:43       3498 youtube/reference_data/region=ca/reference_data.parquet
+2026-08-17 19:55:41       3498 youtube/reference_data/region=gb/reference_data.parquet
+2026-08-17 19:55:45       3498 youtube/reference_data/region=in/reference_data.parquet
+2026-08-17 19:55:40       3529 youtube/reference_data/region=us/reference_data.parquet
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue delete-table --database-name yt-pipeline-silver-devdatta --name clean_reference_data --region ap-south-1
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue start-crawler --name "fix-clean-reference-data" --region ap-south-1
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-crawler --name "fix-clean-reference-data" --region ap-south-1 --query "Crawler.State"
+"RUNNING"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-crawler --name "fix-clean-reference-data" --region ap-south-1 --query "Crawler.State"
+"RUNNING"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-crawler --name "fix-clean-reference-data" --region ap-south-1 --query "Crawler.State"
+"RUNNING"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-crawler --name "fix-clean-reference-data" --region ap-south-1 --query "Crawler.State"
+"STOPPING"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-crawler --name "fix-clean-reference-data" --region ap-south-1 --query "Crawler.State"
+"STOPPING"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-table --database-name yt-pipeline-silver-devdatta --name clean_reference_data --region ap-south-1 --query "Table.[StorageDescriptor.Columns[].Name,PartitionKeys[].Name]"
+[
+    [
+        "category_id",
+        "category_name",
+        "_processed_at",
+        "region"
+    ],
+    [
+        "region"
+    ]
+]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda get-function --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --query "Configuration.CodeSha256"
+"2ai+APSVdtla1dPH2/MsTbaQ/TEp8oOxelkUuQd130g="
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 cp s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=us/reference_data.parquet C:\Users\Devdatta Thorat\yt-pipeline-fix\us_ref.parquet
+
+Unknown options: Thorat\yt-pipeline-fix\us_ref.parquet
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>python3 -c "import pyarrow.parquet as pq; f=pq.ParquetFile('us_ref.parquet'); print(f.schema_arrow)"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\Devdatta Thorat\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pyarrow\parquet\core.py", line 314, in __init__
+    source = filesystem.open_input_file(source)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow\_fs.pyx", line 780, in pyarrow._fs.FileSystem.open_input_file
+  File "pyarrow\error.pxi", line 154, in pyarrow.lib.pyarrow_internal_check_status
+  File "pyarrow\error.pxi", line 91, in pyarrow.lib.check_status
+FileNotFoundError: [WinError 2] Failed to open local file 'us_ref.parquet'. Detail: [Windows error 2] The system cannot find the file specified.
+
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 cp s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=us/reference_data.parquet "C:\Users\Devdatta Thorat\yt-pipeline-fix\us_ref.parquet"
+download: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=us/reference_data.parquet to .\us_ref.parquet
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>python3 -c "import pyarrow.parquet as pq; f=pq.ParquetFile(r'C:\Users\Devdatta Thorat\yt-pipeline-fix\us_ref.parquet'); print(f.schema_arrow)"
+category_id: int64
+category_name: string
+_processed_at: timestamp[ms]
+region: string
+-- schema metadata --
+pandas: '{"index_columns": [], "column_indexes": [], "columns": [{"name":' + 579
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload.json response.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload_gb.json response_gb.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload_ca.json response_ca.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload_in.json response_in.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>type response.json
+{"statusCode": 200, "processed": [{"key": "youtube/raw_statistics_reference_data/region=us/us_category_id.json", "region": "us", "rows": 32}], "errors": []}
+C:\Users\Devdatta Thorat\yt-pipeline-fix>type response_gb.json
+{"statusCode": 200, "processed": [{"key": "youtube/raw_statistics_reference_data/region=gb/gb_category_id.json", "region": "gb", "rows": 31}], "errors": []}
+C:\Users\Devdatta Thorat\yt-pipeline-fix>type response_ca.json
+{"statusCode": 200, "processed": [{"key": "youtube/raw_statistics_reference_data/region=ca/ca_category_id.json", "region": "ca", "rows": 31}], "errors": []}
+C:\Users\Devdatta Thorat\yt-pipeline-fix>type response_in.json
+{"statusCode": 200, "processed": [{"key": "youtube/raw_statistics_reference_data/region=in/in_category_id.json", "region": "in", "rows": 31}], "errors": []}
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 cp s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=us/reference_data.parquet "C:\Users\Devdatta Thorat\yt-pipeline-fix\us_ref2.parquet"
+download: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=us/reference_data.parquet to .\us_ref2.parquet
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>python3 -c "import pyarrow.parquet as pq; f=pq.ParquetFile(r'C:\Users\Devdatta Thorat\yt-pipeline-fix\us_ref2.parquet'); print(f.schema_arrow)"
+category_id: int64
+category_name: string
+_processed_at: timestamp[ms]
+region: string
+-- schema metadata --
+pandas: '{"index_columns": [], "column_indexes": [], "columns": [{"name":' + 579
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>cd "C:\Users\Devdatta Thorat\yt-pipeline-fix"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>python3 -c "import zipfile; z=zipfile.ZipFile('function_new.zip','w',zipfile.ZIP_DEFLATED); z.write('lambda_function.py'); z.close(); print('done')"
+done
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda update-function-code --function-name yt-data-pipeline-json-to-parquet-devdatta --zip-file fileb://function_new.zip --region ap-south-1 --query "CodeSha256"
+"oSRpZQuWcDNeXFUTDnQxq9XTYJcmhLStKkjSltWbj5E="
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda get-function-configuration --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --query "LastUpdateStatus"
+"Successful"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload.json response_test.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>type response_test.json
+{"statusCode": 200, "processed": [{"key": "youtube/raw_statistics_reference_data/region=us/us_category_id.json", "region": "us", "rows": 32}], "errors": []}
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 cp s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=us/reference_data.parquet "C:\Users\Devdatta Thorat\yt-pipeline-fix\us_ref3.parquet"
+download: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/reference_data/region=us/reference_data.parquet to .\us_ref3.parquet
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>python3 -c "import pyarrow.parquet as pq; f=pq.ParquetFile(r'C:\Users\Devdatta Thorat\yt-pipeline-fix\us_ref3.parquet'); print(f.schema_arrow)"
+category_id: int64
+category_name: string
+_processed_at: timestamp[ms]
+-- schema metadata --
+pandas: '{"index_columns": [], "column_indexes": [], "columns": [{"name":' + 470
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload_gb.json response_gb.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload_ca.json response_ca.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws lambda invoke --function-name yt-data-pipeline-json-to-parquet-devdatta --region ap-south-1 --payload file://payload_in.json response_in.json
+{
+    "StatusCode": 200,
+    "ExecutedVersion": "$LATEST"
+}
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue delete-table --database-name yt-pipeline-silver-devdatta --name clean_reference_data --region ap-south-1
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue start-crawler --name "fix-clean-reference-data" --region ap-south-1
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-crawler --name "fix-clean-reference-data" --region ap-south-1 --query "Crawler.State"
+"RUNNING"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-crawler --name "fix-clean-reference-data" --region ap-south-1 --query "Crawler.State"
+"READY"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-table --database-name yt-pipeline-silver-devdatta --name clean_reference_data --region ap-south-1 --query "Table.[StorageDescriptor.Columns[].Name,PartitionKeys[].Name]"
+[
+    [
+        "category_id",
+        "category_name",
+        "_processed_at"
+    ],
+    [
+        "region"
+    ]
+]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws s3 cp s3://aws-glue-assets-442797924637-ap-south-1/scripts/silver_to_gold_analytics.py .\silver_to_gold_check.py
+download: s3://aws-glue-assets-442797924637-ap-south-1/scripts/silver_to_gold_analytics.py to .\silver_to_gold_check.py
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>python3 -c "lines=open('silver_to_gold_check.py').readlines(); [print(i+1,l.rstrip()) for i,l in enumerate(lines[150:165],150)]"
+151 logger.info(
+152     f"Rows with missing category_name after join: {unknown_count}"
+153 )
+154
+155 if unknown_count > 0:
+156
+157     logger.warning(
+158         f"{unknown_count} rows could not be mapped to a category."
+159     )
+160
+161 stats_df = stats_df.fillna(
+162     "Unknown",
+163     subset=["category_name"]
+164 )
+165
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs get-log-events --log-group-name /aws-glue/jobs/output --log-stream-name jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008 --region ap-south-1 --query "events[*].message" --output text 2>nul || aws logs describe-log-streams --log-group-name /aws-glue/jobs --region ap-south-1 --query "logStreams[-3:].logStreamName"
+/usr/lib/spark/python/lib/pyspark.zip/pyspark/sql/dataframe.py:147: UserWarning: DataFrame constructor is internal. Do not directly use it.
+        Running autoDebugger shutdown hook.
+
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-job-run --job-name silver_to_gold_analytics --run-id jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008 --region ap-south-1 --query "JobRun.ErrorMessage"
+"Error Category: UNCLASSIFIED_ERROR; Failed Line Number: 157; Py4JError: An error occurred while calling o153.warning. Trace:"
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs describe-log-streams --log-group-name /aws-glue/jobs --log-stream-name-prefix "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008" --region ap-south-1 --query "logStreams[].logStreamName"
+
+An error occurred (ResourceNotFoundException) when calling the DescribeLogStreams operation: The specified log group does not exist.
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs get-log-events --log-group-name /aws-glue/jobs --log-stream-name "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008" --region ap-south-1 --query "events[-20:].message" --output text
+
+An error occurred (ResourceNotFoundException) when calling the GetLogEvents operation: The specified log group does not exist.
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws glue get-table --database-name yt-pipeline-silver-devdatta --name clean_statistics --region ap-south-1 --query "Table.[StorageDescriptor.Columns[].Name,PartitionKeys[].Name]"
+[
+    [
+        "video_id",
+        "trending_date",
+        "title",
+        "channel_title",
+        "category_id",
+        "publish_time",
+        "tags",
+        "views",
+        "likes",
+        "dislikes",
+        "comment_count",
+        "thumbnail_link",
+        "comments_disabled",
+        "ratings_disabled",
+        "video_error_or_removed",
+        "description",
+        "trending_date_parsed",
+        "like_ratio",
+        "engagement_rate",
+        "_processed_at",
+        "_job_name"
+    ],
+    [
+        "region"
+    ]
+]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs describe-log-streams --log-group-name /aws-glue/jobs/error --log-stream-name-prefix "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008" --region ap-south-1 --query "logStreams[].logStreamName"
+[
+    "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008",
+    "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008_g-f5c202bc68d4320142e76077189db4f461f63a7d"
+]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs get-log-events --log-group-name /aws-glue/jobs/error --log-stream-name "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008" --region ap-south-1 --query "events[-30:].message" --output text
+        at com.amazonaws.services.glue.ProcessLauncher$.main(ProcessLauncher.scala:35)
+                at com.amazonaws.services.glue.ProcessLauncher.main(ProcessLauncher.scala)
+        Caused by: org.apache.spark.SparkUserAppException: User application exited with 1
+                at org.apache.spark.deploy.PythonRunner$.main(PythonRunner.scala:112)
+                at org.apache.spark.deploy.PythonRunner.main(PythonRunner.scala)
+                ... 10 more
+        INFO    2026-08-17T19:55:15,859 75856   org.apache.spark.SparkContext   [shutdown-hook-0]       60      Invoking stop() from shutdown hook
+        INFO    2026-08-17T19:55:15,860 75857   org.apache.spark.SparkContext   [shutdown-hook-0]       60      SparkContext is stopping with exitCode 0.
+        INFO    2026-08-17T19:55:15,863 75860   com.amazonaws.services.glueexceptionanalysis.EventLogFileWriter [spark-listener-group-shared]   70      Logs, events processed and insights are written to file /tmp/glue-exception-analysis-logs/spark-application-1786996449654
+        INFO    2026-08-17T19:55:15,866 75863   glue.ch.cern.sparkmeasure.FlightRecorderStageMetrics    [spark-listener-group-shared]   43      Spark application ended, timestamp = 1786996515861
+        WARN    2026-08-17T19:55:15,866 75863   glue.ch.cern.sparkmeasure.FlightRecorderStageMetrics    [spark-listener-group-shared]   57      Writing Stage Metrics data serialized as json to /tmp/stageMetrics_flightRecorder
+        INFO    2026-08-17T19:55:15,871 75868   org.apache.spark.scheduler.cluster.glue.JESSchedulerBackend     [shutdown-hook-0]       60      Stopping JES Scheduler Backend.
+        INFO    2026-08-17T19:55:15,873 75870   org.apache.spark.scheduler.cluster.glue.JESSchedulerBackend     [shutdown-hook-0]       60      Shutting down all executors
+        INFO    2026-08-17T19:55:15,874 75871   org.apache.spark.scheduler.cluster.glue.JESSchedulerBackend$JESAsSchedulerBackendEndpoint       [dispatcher-CoarseGrainedScheduler] 60      Asking each executor to shut down
+        INFO    2026-08-17T19:55:15,942 75939   glue.ch.cern.sparkmeasure.FlightRecorderTaskMetrics     [spark-listener-group-shared]   102     Spark application ended, timestamp = 1786996515861
+        INFO    2026-08-17T19:55:15,947 75944   glue.ch.cern.sparkmeasure.FlightRecorderTaskMetrics     [spark-listener-group-shared]   116     Writing Task Metrics data serialized as json to /tmp/taskMetrics_flightRecorder
+        INFO    2026-08-17T19:55:16,031 76028   org.apache.spark.MapOutputTrackerMasterEndpoint [dispatcher-event-loop-3]       60      MapOutputTrackerMasterEndpoint stopped!
+        INFO    2026-08-17T19:55:16,048 76045   org.apache.spark.storage.memory.MemoryStore     [shutdown-hook-0]       60      MemoryStore cleared
+        INFO    2026-08-17T19:55:16,052 76049   org.apache.spark.storage.BlockManager   [shutdown-hook-0]       60      BlockManager stopped
+        INFO    2026-08-17T19:55:16,056 76053   org.apache.spark.storage.BlockManagerMaster     [shutdown-hook-0]       60      BlockManagerMaster stopped
+        INFO    2026-08-17T19:55:16,139 76136   org.apache.spark.scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint      [dispatcher-event-loop-3]   60      OutputCommitCoordinator stopped!
+        INFO    2026-08-17T19:55:16,207 76204   org.apache.spark.SparkContext   [shutdown-hook-0]       60      Successfully stopped SparkContext
+        INFO    2026-08-17T19:55:16,208 76205   com.amazonaws.services.glue.LogPusher   [shutdown-hook-0]       60      uploading file:///var/log/spark/apps to s3://aws-glue-assets-442797924637-ap-south-1/sparkHistoryLogs/
+        INFO    2026-08-17T19:55:16,624 76621   org.apache.spark.util.ShutdownHookManager       [shutdown-hook-0]       60      Shutdown hook called
+        INFO    2026-08-17T19:55:16,625 76622   org.apache.spark.util.ShutdownHookManager       [shutdown-hook-0]       60      Deleting directory /tmp/spark-6e436e64-66bd-48f3-b183-bbd48b98d2aa/pyspark-e11bcc97-92d0-4569-b742-72623b241825
+        INFO    2026-08-17T19:55:16,630 76627   org.apache.spark.util.ShutdownHookManager       [shutdown-hook-0]       60      Deleting directory /tmp/spark-0ec4c52b-ea91-4cae-a41d-588d07256c6e
+        INFO    2026-08-17T19:55:16,636 76633   org.apache.spark.util.ShutdownHookManager       [shutdown-hook-0]       60      Deleting directory /tmp/spark-6e436e64-66bd-48f3-b183-bbd48b98d2aa
+        INFO    2026-08-17T19:55:16,919 76916   org.apache.hadoop.metrics2.impl.MetricsSystemImpl       [shutdown-hook-0]       210     Stopping s3a-file-system metrics system...
+        INFO    2026-08-17T19:55:16,920 76917   org.apache.hadoop.metrics2.impl.MetricsSystemImpl       [shutdown-hook-0]       216     s3a-file-system metrics system stopped.
+        INFO    2026-08-17T19:55:16,920 76917   org.apache.hadoop.metrics2.impl.MetricsSystemImpl       [shutdown-hook-0]       612     s3a-file-system metrics system shutdown complete.
+
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs describe-log-groups --log-group-name-prefix "/aws-glue" --region ap-south-1 --query "logGroups[].logGroupName"
+[
+    "/aws-glue/crawlers",
+    "/aws-glue/jobs/error",
+    "/aws-glue/jobs/logs-v2",
+    "/aws-glue/jobs/output"
+]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs get-log-events --log-group-name /aws-glue/jobs/logs-v2 --log-stream-name "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008" --region ap-south-1 --query "events[-40:].message" --output text
+
+An error occurred (ResourceNotFoundException) when calling the GetLogEvents operation: The specified log stream does not exist.
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs describe-log-streams --log-group-name /aws-glue/jobs/logs-v2 --log-stream-name-prefix "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008" --region ap-south-1 --query "logStreams[].logStreamName"
+[]
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>aws logs get-log-events --log-group-name /aws-glue/jobs/error --log-stream-name "jr_3a53de62b8d6f94de40ce7a84476cd9705ee53c87a4168ccfe9d68e80faaf008_g-f5c202bc68d4320142e76077189db4f461f63a7d" --region ap-south-1 --query "events[-30:].message" --output text
+26/08/17 19:55:15 INFO FileScanRDD: TID: 89 - Got next file: path: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/statistics/region=gb/run-1786953168524-part-block-0-0-r-00027-snappy.parquet, range: 0-27227, partition values: [gb], isDataPresent: true, eTag: "b5027e3cb0f3b4cd9e67e9099faba38c". Elapsed time: 22726 micros
+        26/08/17 19:55:15 INFO FileScanRDD: TID: 89 - Reading current file: path: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/statistics/region=gb/run-1786953168524-part-block-0-0-r-00027-snappy.parquet, range: 0-27227, partition values: [gb], isDataPresent: true, eTag: "b5027e3cb0f3b4cd9e67e9099faba38c"
+        26/08/17 19:55:15 INFO AsyncFileDownloader: TID: 89 - Downloaded ParquetFileChunkGroup(path=s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/statistics/region=gb/run-unnamed-1-part-block-0-0-r-00027-snappy.parquet, ordinal=0), elapsedTime=28258 micros
+        26/08/17 19:55:15 INFO FileScanRDD: TID: 89 - Got next file: path: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/statistics/region=gb/run-unnamed-1-part-block-0-0-r-00027-snappy.parquet, range: 0-27227, partition values: [gb], isDataPresent: true, eTag: "06bf15ee64bdb51d3c99395213a82576". Elapsed time: 10734 micros
+        26/08/17 19:55:15 INFO FileScanRDD: TID: 89 - Reading current file: path: s3://yt-data-pipeline-silver-ap-south-1-devdatta/youtube/statistics/region=gb/run-unnamed-1-part-block-0-0-r-00027-snappy.parquet, range: 0-27227, partition values: [gb], isDataPresent: true, eTag: "06bf15ee64bdb51d3c99395213a82576"
+        26/08/17 19:55:15 INFO Executor: Finished task 8.0 in stage 24.0 (TID 89). 4104 bytes result sent to driver
+        26/08/17 19:55:15 INFO CoarseGrainedExecutorBackend: Got assigned task 91
+        26/08/17 19:55:15 INFO Executor: Running task 0.0 in stage 26.0 (TID 91)
+        26/08/17 19:55:15 INFO MapOutputTrackerWorker: Updating epoch to 7 and clearing cache
+        26/08/17 19:55:15 INFO TorrentBroadcast: Started reading broadcast variable 22 with 1 pieces (estimated total size 4.0 MiB)
+        26/08/17 19:55:15 INFO MemoryStore: Block broadcast_22_piece0 stored as bytes in memory (estimated size 6.7 KiB, actual size: 6.7 KiB, free 5.7 GiB)
+        26/08/17 19:55:15 INFO TorrentBroadcast: Reading broadcast variable 22 took 8 ms
+        26/08/17 19:55:15 INFO MemoryStore: Block broadcast_22 stored as values in memory (estimated size 14.2 KiB, free 5.7 GiB)
+        26/08/17 19:55:15 INFO MapOutputTrackerWorker: Don't have map outputs for shuffle 6, fetching them
+        26/08/17 19:55:15 INFO MapOutputTrackerWorker: Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@172.34.105.104:39187)
+        26/08/17 19:55:15 INFO MapOutputTrackerWorker: Got the map output locations
+        26/08/17 19:55:15 INFO ShuffleBlockFetcherIterator: Getting 10 (540.0 B) non-empty blocks including 10 (540.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+        26/08/17 19:55:15 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+        26/08/17 19:55:15 INFO CodeGenerator: Code generated in 9.476012 ms
+        26/08/17 19:55:15 INFO Executor: Finished task 0.0 in stage 26.0 (TID 91). 4465 bytes result sent to driver
+        26/08/17 19:55:15 INFO CoarseGrainedExecutorBackend: Driver commanded a shutdown
+        26/08/17 19:55:15 INFO GlueCloudwatchSink: CloudwatchSink: SparkContext stopped - not reporting metrics now.
+        26/08/17 19:55:15 INFO MemoryStore: MemoryStore cleared
+        26/08/17 19:55:15 INFO BlockManager: BlockManager stopped
+        26/08/17 19:55:16 INFO CoarseGrainedExecutorBackend: Driver from 172.34.105.104:39187 disconnected during shutdown
+26/08/17 19:55:16 INFO CoarseGrainedExecutorBackend: Driver from 172.34.105.104:39187 disconnected during shutdown
+        26/08/17 19:55:16 INFO ShutdownHookManager: Shutdown hook called
+        26/08/17 19:55:16 INFO ShutdownHookManager: Deleting directory /tmp/spark-12a294ff-f3fa-4e9b-90ec-f0b25ddeaafe
+        26/08/17 19:55:16 INFO MetricsSystemImpl: Stopping s3a-file-system metrics system...
+        26/08/17 19:55:16 INFO MetricsSystemImpl: s3a-file-system metrics system stopped.
+        26/08/17 19:55:16 INFO MetricsSystemImpl: s3a-file-system metrics system shutdown complete.
+
+
+C:\Users\Devdatta Thorat\yt-pipeline-fix>
